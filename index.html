@@ -67,8 +67,11 @@
   .old{color:var(--brown);text-decoration:line-through;font-size:1rem;margin-left:8px}
   .qty{display:flex;align-items:center;gap:10px;margin:14px 0}
   .qty button{width:36px;height:36px;border-radius:50%;border:1px solid #e5c98a;background:#fff;font-size:1.2rem;cursor:pointer}
-  .tiers{margin-top:12px;background:#faf7f2;border:1px solid #f0dfb8;border-radius:10px;padding:10px 12px;font-size:.88rem;line-height:1.6}
-  .tiers b{display:block;margin-bottom:2px}
+  .pricelist{margin-top:12px;background:#fff;border:1px solid #f0dfb8;border-radius:10px;padding:10px 12px;font-size:.88rem}
+  .pricelist b{display:block;margin-bottom:4px}
+  .prow{display:flex;justify-content:space-between;gap:8px;padding:6px 2px;border-top:1px solid #f0dfb8}
+  .prow:first-of-type{border-top:0}
+  .prow.sel{background:#e7f5ec;font-weight:700;border-radius:6px}
   .sizes{margin:0 0 14px}
   .sizes b{display:block;margin-bottom:8px}
   .size-row{display:flex;gap:10px}
@@ -199,7 +202,18 @@
           <span>Total: <b id="total"></b></span>
         </div>
         <p id="saveLine" style="color:#15803d;font-weight:700;margin:4px 0 0"></p>
-        <div class="tiers"><b>Bundle offers:</b> 1 pc — ₹349 &nbsp;·&nbsp; 2 pc — ₹658 (₹329/pc) &nbsp;·&nbsp; 3+ pc — ₹299/pc</div>
+        <div class="pricelist"><b>Quantity price list:</b>
+          <div class="prow" id="pr1"><span>1 pc</span><span>₹349</span><span>₹349/pc</span></div>
+          <div class="prow" id="pr2"><span>2 pc</span><span>₹659</span><span>₹329.50/pc</span></div>
+          <div class="prow" id="pr3"><span>3 pc</span><span>₹897</span><span>₹299/pc</span></div>
+          <div class="prow" id="pr4"><span>4 pc</span><span>₹1,196</span><span>₹299/pc</span></div>
+          <div class="prow" id="pr5"><span>5 pc</span><span>₹1,495</span><span>₹299/pc</span></div>
+          <div class="prow" id="pr6"><span>6 pc</span><span>₹1,794</span><span>₹299/pc</span></div>
+          <div class="prow" id="pr7"><span>7 pc</span><span>₹2,093</span><span>₹299/pc</span></div>
+          <div class="prow" id="pr8"><span>8 pc</span><span>₹2,392</span><span>₹299/pc</span></div>
+          <div class="prow" id="pr9"><span>9 pc</span><span>₹2,691</span><span>₹299/pc</span></div>
+          <div class="prow" id="pr10"><span>10 pc</span><span>₹2,990</span><span>₹299/pc</span></div>
+        </div>
         <p style="color:var(--muted)">Order WhatsApp par confirm hoga — naam, address aur payment wahi par tay hoga.</p>
       </div>
     </div>
@@ -259,8 +273,8 @@
   const MRP = 549;              // MRP (pehle wala premium option)
   const WHATSAPP_NUMBER = '917860758561'; // Site par public karne ki approval mil gayi
   let qty = 1;
-  function fmt(n){ return '₹' + n; }
-  function unitPrice(q){ return q === 1 ? PRICE : (q === 2 ? 329 : 299); }
+  function fmt(n){ return '₹' + (Number.isInteger(n) ? n.toLocaleString('en-IN') : n.toFixed(2)); }
+  function unitPrice(q){ return q === 1 ? PRICE : (q === 2 ? 329.5 : 299); }
   function refresh(){
     const unit = unitPrice(qty);
     const total = unit * qty;
@@ -281,10 +295,13 @@
     document.getElementById('orderWa').textContent = 'Buy at ' + fmt(total);
     document.getElementById('buyNowBar').textContent = 'Buy at ' + fmt(total);
     document.getElementById('buyNowSide').textContent = 'Buy at ' + fmt(total);
+    document.querySelectorAll('.prow').forEach(r => r.classList.remove('sel'));
+    const prow = document.getElementById('pr' + qty);
+    if(prow) prow.classList.add('sel');
     document.getElementById('sidePrice').textContent = fmt(unit);
     document.getElementById('sideMrp').textContent = fmt(MRP);
   }
-  function chgQty(d){ qty = Math.max(1, Math.min(20, qty + d)); refresh(); }
+  function chgQty(d){ qty = Math.max(1, Math.min(10, qty + d)); refresh(); }
   function swapImg(el, src){
     const m = document.getElementById('mainImg');
     m.style.opacity = 0;
@@ -390,13 +407,13 @@
       '<p><a href="#" onclick="clearCart();return false;" style="color:var(--muted)">Cart khaali karein</a></p>';
   }
   function addToCart(){
-    cartQty = Math.min(20, cartQty + qty);
+    cartQty = Math.min(10, cartQty + qty);
     saveCart();
     updateCartBadge();
     toggleCart(true);
   }
   function cartChg(d){
-    cartQty = Math.max(0, Math.min(20, cartQty + d));
+    cartQty = Math.max(0, Math.min(10, cartQty + d));
     saveCart();
     updateCartBadge();
     renderCart();
