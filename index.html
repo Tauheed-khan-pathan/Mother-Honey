@@ -9,7 +9,7 @@
   :root{--amber:#b45309;--amber2:#d97706;--cream:#faf7f2;--brown:#3f2d12;--muted:#7a5c33;--green:#0b3d2e}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--cream);color:var(--brown)}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--cream);color:var(--brown);overflow-x:clip}
   a{color:var(--amber)}
   /* Header */
   header{position:sticky;top:0;z-index:10;background:#faf7f2;border-bottom:0;display:flex;align-items:center;gap:12px;padding:1px 16px}
@@ -35,18 +35,18 @@
   main{max-width:960px;margin:0 auto;padding:0 16px 40px}
   /* Hero — Premium Minimal (Design A) */
   .hero{max-width:640px;margin:0 auto;text-align:center;padding:48px 0 32px}
-  .carousel{position:relative;overflow:hidden;background:#000;border-radius:16px;margin:10px 6px 0;box-shadow:0 4px 16px rgba(0,0,0,.12)}
-  .car-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}
+  .carousel{position:relative;overflow:visible;background:#000;border-radius:16px;margin:10px 6px 0;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+  .car-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;border-radius:16px}
   .car-track::-webkit-scrollbar{display:none}
   .car-slide{position:relative;flex:0 0 100%;scroll-snap-align:start;aspect-ratio:2/1;max-height:420px;overflow:hidden}
   .car-slide img{width:100%;height:100%;object-fit:cover;display:block}
   .car-cap{position:absolute;left:0;right:0;bottom:0;padding:28px 16px 12px;background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,0));color:#fff}
   .car-cap b{display:block;font-size:1.05rem;margin-bottom:3px;text-shadow:0 1px 3px rgba(0,0,0,.45)}
   .car-cap span{font-size:.8rem;line-height:1.4;color:rgba(255,255,255,.92);text-shadow:0 1px 3px rgba(0,0,0,.45)}
-  .car-btn{position:absolute;top:42%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#3f2d12;font-size:1.3rem;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;padding-bottom:2px;transition:transform .15s}
+  .car-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#3f2d12;font-size:1.5rem;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;padding-bottom:2px;transition:transform .15s}
   .car-btn:active{transform:translateY(-50%) scale(.92)}
-  .car-btn.prev{left:10px}
-  .car-btn.next{right:10px}
+  .car-btn.prev{left:-12px}
+  .car-btn.next{right:-12px}
   .hero h1{font-family:Georgia,'Times New Roman',serif;font-size:3.2rem;font-weight:400;margin:0 0 14px;letter-spacing:.5px}
   .hero p{color:#6f6156;line-height:1.6}
   .hero img{width:92%;max-width:520px;aspect-ratio:1/1;border-radius:16px;object-fit:cover;margin:20px auto 0}
