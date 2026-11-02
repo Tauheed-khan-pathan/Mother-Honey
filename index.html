@@ -35,7 +35,7 @@
   .hero{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;padding:32px 0}
   .hero h1{font-size:2.2rem;margin:0 0 10px}
   .hero p{color:var(--muted);line-height:1.6}
-  .hero img{width:100%;border-radius:16px;object-fit:cover}
+  .hero img{width:100%;aspect-ratio:1/1;border-radius:16px;object-fit:cover}
   .btn{display:inline-block;padding:12px 22px;border-radius:24px;text-decoration:none;font-weight:700;cursor:pointer;border:0;transition:background .25s ease,transform .15s ease}
   .btn:hover{transform:translateY(-1px)}
   .btn:active{transform:scale(.97)}
@@ -45,7 +45,7 @@
   /* Product */
   .card{background:#fff;border:1px solid #f0dfb8;border-radius:16px;padding:20px;margin-top:8px}
   .product{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  .product img.main{width:100%;border-radius:12px;object-fit:cover;transition:opacity .3s ease}
+  .product img.main{width:100%;aspect-ratio:1/1;border-radius:12px;object-fit:cover;transition:opacity .3s ease}
   .thumbs{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
   .thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:transform .2s ease,border-color .2s ease}
   .thumbs img:hover{transform:scale(1.07)}
