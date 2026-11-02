@@ -43,7 +43,7 @@
   .card{background:#fff;border:1px solid #f0dfb8;border-radius:16px;padding:20px;margin-top:8px}
   .product{display:grid;grid-template-columns:1fr 1fr;gap:24px}
   .product img.main{width:100%;border-radius:12px;object-fit:cover}
-  .thumbs{display:flex;gap:8px;margin-top:8px}
+  .thumbs{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
   .thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent}
   .thumbs img.sel{border-color:var(--amber)}
   .price{font-size:1.6rem;font-weight:800;color:var(--amber)}
@@ -93,17 +93,21 @@
       <a class="btn btn-wa" id="heroWa" href="#">WhatsApp par Order Karein</a>
       <a class="btn btn-amber" href="#product">Product Dekhein</a>
     </div>
-    <img src="assets/hero.webp" alt="Mother Honey jar">
+    <img src="hero.jpg" alt="Mother Honey jar">
   </section>
 
   <section id="product" class="card" data-search="mother honey pure raw honey 300g jar dipper gift packing order">
     <div class="product">
       <div>
-        <img class="main" id="mainImg" src="assets/hero.webp" alt="Mother Honey 300g jar">
+        <img class="main" id="mainImg" src="hero.jpg" alt="Mother Honey 300g jar">
         <div class="thumbs">
-          <img class="sel" src="assets/hero.webp" onclick="swapImg(this,'assets/hero.webp')" alt="Jar">
-          <img src="assets/dipper.webp" onclick="swapImg(this,'assets/dipper.webp')" alt="Dipper">
-          <img src="assets/gift.webp" onclick="swapImg(this,'assets/gift.webp')" alt="Gift packing">
+          <img class="sel" src="hero.jpg" onclick="swapImg(this,'hero.jpg')" alt="Jar">
+          <img src="dipper.jpg" onclick="swapImg(this,'dipper.jpg')" alt="Dipper">
+          <img src="gift.jpg" onclick="swapImg(this,'gift.jpg')" alt="Gift packing">
+          <img src="drip.jpg" onclick="swapImg(this,'drip.jpg')" alt="Dripping honey">
+          <img src="kit.jpg" onclick="swapImg(this,'kit.jpg')" alt="Full kit">
+          <img src="model-1.jpg" onclick="swapImg(this,'model-1.jpg')" alt="Model with jar">
+          <img src="model-2.jpg" onclick="swapImg(this,'model-2.jpg')" alt="Model with gift box">
         </div>
       </div>
       <div>
