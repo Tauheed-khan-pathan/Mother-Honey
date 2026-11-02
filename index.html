@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mother Honey — Pure Raw Honey 300g | Shaheen Enterprises</title>
+<meta name="description" content="Mother Honey — pure raw honey in a beautiful 300g jar with a wooden honey dipper and gift packing. Order directly on WhatsApp.">
+<style>
+  :root{--amber:#b45309;--amber2:#d97706;--cream:#fff8ec;--brown:#3f2d12;--muted:#7a5c33;--green:#0b3d2e}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--cream);color:var(--brown)}
+  a{color:var(--amber)}
+  /* Header */
+  header{position:sticky;top:0;z-index:10;background:#fff8ec;border-bottom:1px solid #f0dfb8;display:flex;align-items:center;gap:12px;padding:10px 16px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--brown)}
+  .logo img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+  .logo b{font-size:1.25rem}
+  .logo span{display:block;font-size:.75rem;color:var(--muted)}
+  nav{display:flex;gap:16px;margin-left:auto}
+  nav a{text-decoration:none;color:var(--brown);font-weight:600}
+  .searchbox{margin-left:12px;display:flex;gap:6px}
+  .searchbox input{padding:8px 10px;border:1px solid #e5c98a;border-radius:20px;min-width:150px;background:#fff}
+  .searchbox button{padding:8px 14px;border:0;border-radius:20px;background:var(--amber);color:#fff;font-weight:700;cursor:pointer}
+  .burger{display:none;margin-left:auto;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--brown)}
+  @media(max-width:760px){
+    nav{display:none;position:absolute;top:64px;left:0;right:0;background:#fff8ec;flex-direction:column;padding:12px 16px;border-bottom:1px solid #f0dfb8}
+    nav.open{display:flex}
+    .searchbox{display:none}
+    .searchbox.mobile{display:flex;margin:12px 16px 0}
+    .burger{display:block}
+  }
+  main{max-width:960px;margin:0 auto;padding:0 16px 40px}
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;padding:32px 0}
+  .hero h1{font-size:2.2rem;margin:0 0 10px}
+  .hero p{color:var(--muted);line-height:1.6}
+  .hero img{width:100%;border-radius:16px;object-fit:cover}
+  .btn{display:inline-block;padding:12px 22px;border-radius:24px;text-decoration:none;font-weight:700;cursor:pointer;border:0}
+  .btn-wa{background:#25D366;color:#fff}
+  .btn-amber{background:var(--amber);color:#fff}
+  @media(max-width:760px){.hero{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  /* Product */
+  .card{background:#fff;border:1px solid #f0dfb8;border-radius:16px;padding:20px;margin-top:8px}
+  .product{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .product img.main{width:100%;border-radius:12px;object-fit:cover}
+  .thumbs{display:flex;gap:8px;margin-top:8px}
+  .thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent}
+  .thumbs img.sel{border-color:var(--amber)}
+  .price{font-size:1.6rem;font-weight:800;color:var(--amber)}
+  .old{color:var(--muted);text-decoration:line-through;font-size:1rem;margin-left:8px}
+  .qty{display:flex;align-items:center;gap:10px;margin:14px 0}
+  .qty button{width:36px;height:36px;border-radius:50%;border:1px solid #e5c98a;background:#fff;font-size:1.2rem;cursor:pointer}
+  .tabs{display:flex;gap:8px;margin-top:20px;border-bottom:2px solid #f0dfb8}
+  .tabs button{background:none;border:0;padding:10px 14px;font-weight:700;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent}
+  .tabs button.on{color:var(--amber);border-bottom-color:var(--amber)}
+  .tabpane{display:none;line-height:1.7;padding-top:12px}
+  .tabpane.on{display:block}
+  @media(max-width:760px){.product{grid-template-columns:1fr}}
+  /* Sections */
+  h2{margin-top:40px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .why{background:#fff;border:1px solid #f0dfb8;border-radius:12px;padding:16px}
+  @media(max-width:760px){.grid3{grid-template-columns:1fr}}
+  .faq{margin-top:12px}
+  .faq details{background:#fff;border:1px solid #f0dfb8;border-radius:10px;padding:12px 16px;margin-bottom:8px}
+  .faq summary{font-weight:700;cursor:pointer}
+  .nores{color:var(--muted);text-align:center;padding:20px}
+  footer{background:var(--green);color:#d1d5db;text-align:center;padding:32px 16px;margin-top:40px}
+  footer .foot-logo{font-size:1.4rem;color:#fff;margin:0 auto 8px}
+  footer a{color:#a7f3d0;text-decoration:none}
+  footer p{max-width:700px;margin:6px auto}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#"><img src="assets/logo.webp" alt="Mother Honey logo"><span><b>Mother Honey</b><span>Pure Raw Honey</span></span></a>
+  <nav id="mainNav">
+    <a href="#product">Product</a>
+    <a href="#why">Why Mother Honey</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="searchbox"><input id="search" type="text" placeholder="Search product, FAQ…"><button onclick="doSearch()">Search</button></div>
+  <button class="burger" aria-label="Menu" onclick="document.getElementById('mainNav').classList.toggle('open');document.getElementById('mSearch').classList.toggle('mobile')">☰</button>
+</header>
+<div class="searchbox mobile" id="mSearch" style="display:none"><input id="searchM" type="text" placeholder="Search product, FAQ…"><button onclick="doSearch(true)">Search</button></div>
+
+<main>
+  <section class="hero">
+    <div>
+      <h1>Shuddh, raw honey — seedha aapke ghar tak.</h1>
+      <p>Mother Honey ka 300g jar: pure raw honey, lakdi ka honey dipper aur gift packing ke saath. Koi milawat nahi, bas asli swaad.</p>
+      <a class="btn btn-wa" id="heroWa" href="#">WhatsApp par Order Karein</a>
+      <a class="btn btn-amber" href="#product">Product Dekhein</a>
+    </div>
+    <img src="assets/hero.webp" alt="Mother Honey jar">
+  </section>
+
+  <section id="product" class="card" data-search="mother honey pure raw honey 300g jar dipper gift packing order">
+    <div class="product">
+      <div>
+        <img class="main" id="mainImg" src="assets/hero.webp" alt="Mother Honey 300g jar">
+        <div class="thumbs">
+          <img class="sel" src="assets/hero.webp" onclick="swapImg(this,'assets/hero.webp')" alt="Jar">
+          <img src="assets/dipper.webp" onclick="swapImg(this,'assets/dipper.webp')" alt="Dipper">
+          <img src="assets/gift.webp" onclick="swapImg(this,'assets/gift.webp')" alt="Gift packing">
+        </div>
+      </div>
+      <div>
+        <h2 style="margin-top:0">Mother Honey — Pure Raw Honey (300g)</h2>
+        <p>300g honey &bull; Food-grade jar &bull; Wooden honey dipper &bull; Gift packing included</p>
+        <div><span class="price" id="priceText"></span><span class="old" id="mrpText"></span></div>
+        <div class="qty">
+          <button onclick="chgQty(-1)">−</button>
+          <span>Qty: <b id="qty">1</b></span>
+          <button onclick="chgQty(1)">+</button>
+          <span>Total: <b id="total"></b></span>
+        </div>
+        <a class="btn btn-wa" id="orderWa" href="#">WhatsApp par Order Karein</a>
+        <p style="color:var(--muted)">Order WhatsApp par confirm hoga — naam, address aur payment wahi par tay hoga.</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="on" onclick="tab(this,'t1')">Details</button>
+      <button onclick="tab(this,'t2')">Purity &amp; Packing</button>
+      <button onclick="tab(this,'t3')">Delivery</button>
+    </div>
+    <div class="tabpane on" id="t1">Mother Honey 300g jar me pure raw honey hai. Har jar ke saath ek lakdi ka honey dipper aur gift packing milti hai — apne liye ya gift ke liye, dono ke liye perfect.</div>
+    <div class="tabpane" id="t2">Honey ko food-grade jar me pack kiya jaata hai. Koi added sugar ya milawat nahi. Lab report ki jaankari order ke waqt WhatsApp par di ja sakti hai.</div>
+    <div class="tabpane" id="t3">Delivery poore India me available hai. Delivery charges aur time order ke waqt aapke address ke hisaab se WhatsApp par bataye jayenge.</div>
+  </section>
+
+  <h2 id="why">Why Mother Honey?</h2>
+  <div class="grid3">
+    <div class="why" data-search="pure raw honey no adulteration"><b>100% Pure &amp; Raw</b><p>Seedha, asli honey — bina milawat ke.</p></div>
+    <div class="why" data-search="gift packing jar dipper"><b>Gift Packing</b><p>Designer jar + wooden dipper + gift box — kholte hi premium feel.</p></div>
+    <div class="why" data-search="washim order whatsapp"><b>Direct Order</b><p>Bina beech ke — WhatsApp par seedha order, seedha jawab.</p></div>
+  </div>
+
+  <h2 id="faq">FAQ</h2>
+  <div class="faq" id="faqList">
+    <details data-search="honey pure raw sugar"><summary>Kya ye honey pure hai?</summary><p>Ji, Mother Honey pure raw honey hai — bina added sugar aur bina milawat ke.</p></details>
+    <details data-search="jar weight 300g dipper"><summary>Jar me kitna honey hai? Dipper milega?</summary><p>Har jar me 300g honey hai, aur har jar ke saath ek wooden honey dipper milta hai.</p></details>
+    <details data-search="order whatsapp payment delivery"><summary>Order kaise karein? Payment kaise hogi?</summary><p>WhatsApp button par click karein — aapka order message ban jayega. Payment aur delivery WhatsApp par confirm hogi.</p></details>
+    <details data-search="delivery india charges"><summary>Delivery kahan-kahan hoti hai?</summary><p>Poore India me delivery hoti hai. Charges aapke address ke hisaab se bataye jayenge.</p></details>
+  </div>
+  <div class="nores" id="noRes" style="display:none">Kuch nahi mila — doosra word try karein.</div>
+</main>
+
+<footer id="contact">
+  <p class="foot-logo">Mother Honey</p>
+  <p>Pure raw honey — by Shaheen Enterprises, Washim, Maharashtra 444505</p>
+  <p><a href="mailto:motherhoneyteam@gmail.com">motherhoneyteam@gmail.com</a></p>
+  <p style="color:#9ca3af;font-size:.85rem">© 2026 Mother Honey. Product photos abhi illustrative hain — asli product photoshoot ke baad update ki jayengi.</p>
+</footer>
+
+<script>
+  // ---- Final settings (Tauheed ke answers, 2 Nov 2026) ----
+  const PRICE = 349;            // Final selling price
+  const MRP = 349;              // MRP = selling price (koi fake discount nahi)
+  const WHATSAPP_NUMBER = '917860758561'; // Site par public karne ki approval mil gayi
+  let qty = 1;
+  function fmt(n){ return '₹' + n; }
+  function refresh(){
+    document.getElementById('qty').textContent = qty;
+    document.getElementById('total').textContent = fmt(PRICE * qty);
+    document.getElementById('priceText').textContent = fmt(PRICE);
+    document.getElementById('mrpText').style.display = (MRP > PRICE) ? '' : 'none';
+    document.getElementById('mrpText').textContent = fmt(MRP);
+    const msg = 'Namaste! Mujhe Mother Honey 300g jar order karna hai.%0AQty: ' + qty + '%0ATotal: ' + fmt(PRICE * qty);
+    const link = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg;
+    document.getElementById('orderWa').href = link;
+    document.getElementById('heroWa').href = link;
+  }
+  function chgQty(d){ qty = Math.max(1, Math.min(20, qty + d)); refresh(); }
+  function swapImg(el, src){
+    document.getElementById('mainImg').src = src;
+    document.querySelectorAll('.thumbs img').forEach(i => i.classList.remove('sel'));
+    el.classList.add('sel');
+  }
+  function tab(btn, id){
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.tabpane').forEach(p => p.classList.remove('on'));
+    document.getElementById(id).classList.add('on');
+  }
+  function doSearch(mobile){
+    const q = (mobile ? document.getElementById('searchM') : document.getElementById('search')).value.trim().toLowerCase();
+    if(!q) return;
+    let found = false;
+    document.querySelectorAll('#faqList details').forEach(d => {
+      const show = (d.dataset.search + ' ' + d.textContent).toLowerCase().includes(q);
+      d.style.display = show ? '' : 'none';
+      if(show) found = true;
+    });
+    const prod = document.getElementById('product');
+    const prodShow = (prod.dataset.search + ' ' + prod.textContent).toLowerCase().includes(q);
+    prod.style.display = prodShow ? '' : 'none';
+    if(prodShow) found = true;
+    document.getElementById('noRes').style.display = found ? 'none' : '';
+    document.getElementById('faq').scrollIntoView({behavior:'smooth'});
+  }
+  refresh();
+</script>
+</body>
+</html>
