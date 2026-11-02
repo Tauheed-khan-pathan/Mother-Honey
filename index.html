@@ -63,8 +63,8 @@
   .thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:transform .2s ease,border-color .2s ease}
   .thumbs img:hover{transform:scale(1.07)}
   .thumbs img.sel{border-color:var(--amber)}
-  .price{font-size:1.6rem;font-weight:800;color:var(--amber)}
-  .old{color:var(--muted);text-decoration:line-through;font-size:1rem;margin-left:8px}
+  .price{font-size:1.6rem;font-weight:800;color:#15803d}
+  .old{color:var(--brown);text-decoration:line-through;font-size:1rem;margin-left:8px}
   .qty{display:flex;align-items:center;gap:10px;margin:14px 0}
   .qty button{width:36px;height:36px;border-radius:50%;border:1px solid #e5c98a;background:#fff;font-size:1.2rem;cursor:pointer}
   .tiers{margin-top:12px;background:#faf7f2;border:1px solid #f0dfb8;border-radius:10px;padding:10px 12px;font-size:.88rem;line-height:1.6}
@@ -96,7 +96,7 @@
     .sticky-bar{display:none}
     .side-buy{display:block;position:fixed;right:20px;top:50%;transform:translateY(-50%);width:210px;background:#fff;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.18);padding:16px;z-index:40}
     .side-buy b{display:block;margin-bottom:8px}
-    .side-buy .side-price{font-size:1.3rem;font-weight:800;color:var(--amber)}
+    .side-buy .side-price{font-size:1.3rem;font-weight:800;color:#15803d}
     .side-buy a,.side-buy button{display:block;width:100%;text-align:center;padding:11px 8px;border-radius:10px;font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none;margin-top:10px}
   }
   .tabs{display:flex;gap:8px;margin-top:20px;border-bottom:2px solid #f0dfb8}
@@ -191,7 +191,7 @@
         </div>
         <p>300g honey &bull; Food-grade jar &bull; Wooden honey dipper &bull; Gift packing included</p>
         <div><span class="price" id="priceText"></span><span class="old" id="mrpText"></span></div>
-        <a class="btn btn-wa" id="orderWa" href="#">WhatsApp par Order Karein</a>
+        <a class="btn bar-buy" id="orderWa" href="#">Buy at ₹349</a>
         <div class="qty">
           <button onclick="chgQty(-1)">−</button>
           <span>Qty: <b id="qty">1</b></span>
@@ -239,13 +239,13 @@
 
 <div class="sticky-bar">
   <button class="bar-cart" onclick="addToCart()">Add to Cart</button>
-  <a class="bar-buy" id="buyNowBar" href="#">Buy Now</a>
+  <a class="bar-buy" id="buyNowBar" href="#">Buy at ₹349</a>
 </div>
 <div class="side-buy">
   <b>Mother Honey 300g</b>
   <div><span class="side-price" id="sidePrice"></span><span class="old" id="sideMrp"></span></div>
   <button class="bar-cart" onclick="addToCart()">Add to Cart</button>
-  <a class="bar-buy" id="buyNowSide" href="#">Buy Now</a>
+  <a class="bar-buy" id="buyNowSide" href="#">Buy at ₹349</a>
 </div>
 <div class="cart-backdrop" id="cartBackdrop" onclick="toggleCart(false)"></div>
 <div class="cart-drawer" id="cartDrawer">
@@ -278,6 +278,9 @@
     document.getElementById('orderWa').href = link;
     document.getElementById('buyNowBar').href = link;
     document.getElementById('buyNowSide').href = link;
+    document.getElementById('orderWa').textContent = 'Buy at ' + fmt(total);
+    document.getElementById('buyNowBar').textContent = 'Buy at ' + fmt(total);
+    document.getElementById('buyNowSide').textContent = 'Buy at ' + fmt(total);
     document.getElementById('sidePrice').textContent = fmt(unit);
     document.getElementById('sideMrp').textContent = fmt(MRP);
   }
@@ -383,7 +386,7 @@
         '<span>Total: <b>' + fmt(total) + '</b></span>' +
       '</div>' +
       '<p style="color:#15803d;font-weight:700">Aap ₹' + saved + ' bacha rahe ho!</p>' +
-      '<a class="btn btn-wa" href="https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg + '">WhatsApp par Order Karein</a>' +
+      '<a class="btn bar-buy" href="https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg + '">Buy at ' + fmt(total) + '</a>' +
       '<p><a href="#" onclick="clearCart();return false;" style="color:var(--muted)">Cart khaali karein</a></p>';
   }
   function addToCart(){
