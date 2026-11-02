@@ -69,6 +69,36 @@
   .qty button{width:36px;height:36px;border-radius:50%;border:1px solid #e5c98a;background:#fff;font-size:1.2rem;cursor:pointer}
   .tiers{margin-top:12px;background:#faf7f2;border:1px solid #f0dfb8;border-radius:10px;padding:10px 12px;font-size:.88rem;line-height:1.6}
   .tiers b{display:block;margin-bottom:2px}
+  .sizes{margin:0 0 14px}
+  .sizes b{display:block;margin-bottom:8px}
+  .size-row{display:flex;gap:10px}
+  .size{flex:1;max-width:110px;padding:10px 6px;border-radius:10px;border:2px solid #e5c98a;background:#fff;font-weight:700;font-size:.95rem;cursor:pointer;color:var(--brown)}
+  .size.on{background:#3f2d12;color:#fff;border-color:#3f2d12}
+  .size.off{opacity:.55;cursor:not-allowed}
+  .size small{display:block;font-weight:400;font-size:.72rem;margin-top:3px}
+  .cart-btn{position:relative;background:none;border:0;font-size:1.35rem;cursor:pointer;padding:4px;line-height:1}
+  .cart-count{position:absolute;top:-4px;right:-6px;background:#b45309;color:#fff;font-size:.62rem;min-width:16px;height:16px;border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0 3px;font-weight:700}
+  .sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;padding:10px 12px;display:flex;gap:10px;box-shadow:0 -2px 14px rgba(0,0,0,.15)}
+  .sticky-bar a,.sticky-bar button{flex:1;text-align:center;padding:13px 8px;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer;text-decoration:none}
+  .bar-cart{background:#fff;color:#3f2d12;border:2px solid #3f2d12}
+  .bar-buy{background:#ffc200;color:#3f2d12;border:2px solid #ffc200}
+  .side-buy{display:none}
+  .cart-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none}
+  .cart-backdrop.show{display:block}
+  .cart-drawer{position:fixed;top:0;right:0;height:100%;width:min(360px,88vw);background:#fff;z-index:60;transform:translateX(105%);transition:transform .3s ease;box-shadow:-4px 0 20px rgba(0,0,0,.2);padding:20px;overflow-y:auto}
+  .cart-drawer.show{transform:translateX(0)}
+  .cart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .cart-head button{background:none;border:0;font-size:1.3rem;cursor:pointer}
+  .cart-item{display:flex;gap:12px;align-items:center;border-bottom:1px solid #f0dfb8;padding-bottom:14px;margin-bottom:14px}
+  .cart-item img{width:56px;height:56px;object-fit:cover;border-radius:10px}
+  @media(max-width:1099px){body{padding-bottom:76px}}
+  @media(min-width:1100px){
+    .sticky-bar{display:none}
+    .side-buy{display:block;position:fixed;right:20px;top:50%;transform:translateY(-50%);width:210px;background:#fff;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.18);padding:16px;z-index:40}
+    .side-buy b{display:block;margin-bottom:8px}
+    .side-buy .side-price{font-size:1.3rem;font-weight:800;color:var(--amber)}
+    .side-buy a,.side-buy button{display:block;width:100%;text-align:center;padding:11px 8px;border-radius:10px;font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none;margin-top:10px}
+  }
   .tabs{display:flex;gap:8px;margin-top:20px;border-bottom:2px solid #f0dfb8}
   .tabs button{background:none;border:0;padding:10px 14px;font-weight:700;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent}
   .tabs button.on{color:var(--amber);border-bottom-color:var(--amber)}
@@ -101,6 +131,7 @@
     <a href="#contact">Contact</a>
   </nav>
   <div class="searchbox"><input id="search" type="text" placeholder="Search product, FAQ…"><button onclick="doSearch()">Search</button></div>
+  <button class="cart-btn" aria-label="Cart" onclick="toggleCart(true)">🛒<span class="cart-count" id="cartCount" style="display:none"></span></button>
   <button class="burger" aria-label="Menu" onclick="document.getElementById('mainNav').classList.toggle('open');document.getElementById('mSearch').classList.toggle('mobile')"><span></span><span></span><span></span></button>
 </header>
 <div class="searchbox mobile" id="mSearch" style="display:none"><input id="searchM" type="text" placeholder="Search product, FAQ…"><button onclick="doSearch(true)">Search</button></div>
@@ -150,6 +181,14 @@
         </div>
       </div>
       <div>
+        <div class="sizes">
+          <b>Selected Quantity: 300g</b>
+          <div class="size-row">
+            <button class="size on">300g</button>
+            <button class="size off" disabled>500g<small>Out of stock</small></button>
+            <button class="size off" disabled>1kg<small>Out of stock</small></button>
+          </div>
+        </div>
         <p>300g honey &bull; Food-grade jar &bull; Wooden honey dipper &bull; Gift packing included</p>
         <div><span class="price" id="priceText"></span><span class="old" id="mrpText"></span></div>
         <a class="btn btn-wa" id="orderWa" href="#">WhatsApp par Order Karein</a>
@@ -198,6 +237,22 @@
   <p style="color:#9ca3af;font-size:.85rem">© 2026 Mother Honey. Product photos abhi illustrative hain — asli product photoshoot ke baad update ki jayengi.</p>
 </footer>
 
+<div class="sticky-bar">
+  <button class="bar-cart" onclick="addToCart()">Add to Cart</button>
+  <a class="bar-buy" id="buyNowBar" href="#">Buy Now</a>
+</div>
+<div class="side-buy">
+  <b>Mother Honey 300g</b>
+  <div><span class="side-price" id="sidePrice"></span><span class="old" id="sideMrp"></span></div>
+  <button class="bar-cart" onclick="addToCart()">Add to Cart</button>
+  <a class="bar-buy" id="buyNowSide" href="#">Buy Now</a>
+</div>
+<div class="cart-backdrop" id="cartBackdrop" onclick="toggleCart(false)"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><b>Your Cart</b><button aria-label="Close cart" onclick="toggleCart(false)">✕</button></div>
+  <div id="cartBody"></div>
+</div>
+
 <script>
   // ---- Final settings (Tauheed ke answers, 2 Nov 2026) ----
   const PRICE = 349;            // 1 pc price
@@ -221,6 +276,10 @@
     const msg = 'Namaste! Mujhe Mother Honey 300g jar order karna hai.%0AQty: ' + qty + '%0APrice: ' + fmt(unit) + '/pc%0ATotal: ' + fmt(total) + '%0ABachat: ' + fmt(saved);
     const link = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg;
     document.getElementById('orderWa').href = link;
+    document.getElementById('buyNowBar').href = link;
+    document.getElementById('buyNowSide').href = link;
+    document.getElementById('sidePrice').textContent = fmt(unit);
+    document.getElementById('sideMrp').textContent = fmt(MRP);
   }
   function chgQty(d){ qty = Math.max(1, Math.min(20, qty + d)); refresh(); }
   function swapImg(el, src){
@@ -289,6 +348,58 @@
     jumpTo(1);
     auto();
   })();
+  let cartQty = 0;
+  try { cartQty = parseInt(localStorage.getItem('mh-cart-qty') || '0', 10) || 0; } catch(e) { cartQty = 0; }
+  function saveCart(){ try { localStorage.setItem('mh-cart-qty', String(cartQty)); } catch(e) {} }
+  function updateCartBadge(){
+    const b = document.getElementById('cartCount');
+    b.textContent = cartQty > 0 ? cartQty : '';
+    b.style.display = cartQty > 0 ? 'flex' : 'none';
+  }
+  function toggleCart(open){
+    document.getElementById('cartDrawer').classList.toggle('show', open);
+    document.getElementById('cartBackdrop').classList.toggle('show', open);
+    if(open) renderCart();
+  }
+  function renderCart(){
+    const body = document.getElementById('cartBody');
+    if(cartQty <= 0){
+      body.innerHTML = '<p>Cart khaali hai. Koi jar add karein.</p>';
+      return;
+    }
+    const unit = unitPrice(cartQty);
+    const total = unit * cartQty;
+    const saved = MRP * cartQty - total;
+    const msg = 'Namaste! Mujhe Mother Honey order karna hai.%0A300g jar x ' + cartQty + '%0ATotal: ' + fmt(total) + '%0ABachat: ' + fmt(saved);
+    body.innerHTML =
+      '<div class="cart-item">' +
+        '<img src="hero.jpg" alt="Mother Honey 300g jar">' +
+        '<div><b>Mother Honey — 300g</b><br><span>' + fmt(unit) + '/pc &nbsp;·&nbsp; MRP <s>' + fmt(MRP) + '</s></span></div>' +
+      '</div>' +
+      '<div class="qty">' +
+        '<button onclick="cartChg(-1)">−</button>' +
+        '<span>Qty: <b>' + cartQty + '</b></span>' +
+        '<button onclick="cartChg(1)">+</button>' +
+        '<span>Total: <b>' + fmt(total) + '</b></span>' +
+      '</div>' +
+      '<p style="color:#15803d;font-weight:700">Aap ₹' + saved + ' bacha rahe ho!</p>' +
+      '<a class="btn btn-wa" href="https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg + '">WhatsApp par Order Karein</a>' +
+      '<p><a href="#" onclick="clearCart();return false;" style="color:var(--muted)">Cart khaali karein</a></p>';
+  }
+  function addToCart(){
+    cartQty = Math.min(20, cartQty + qty);
+    saveCart();
+    updateCartBadge();
+    toggleCart(true);
+  }
+  function cartChg(d){
+    cartQty = Math.max(0, Math.min(20, cartQty + d));
+    saveCart();
+    updateCartBadge();
+    renderCart();
+  }
+  function clearCart(){ cartQty = 0; saveCart(); updateCartBadge(); renderCart(); }
+  updateCartBadge();
   refresh();
 </script>
 </body>
