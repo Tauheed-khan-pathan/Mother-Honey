@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mother Honey — Pure Raw Honey 300g | Shaheen Enterprises</title>
+<title>Mother Honey — Pure, Raw &amp; Natural Honey 300g | Shaheen Enterprises</title>
 <meta name="description" content="Mother Honey — pure raw honey in a beautiful 300g jar with a wooden honey dipper and gift packing. Order directly on WhatsApp.">
 <style>
   :root{--amber:#b45309;--amber2:#d97706;--cream:#faf7f2;--brown:#3f2d12;--muted:#7a5c33;--green:#0b3d2e}
@@ -34,7 +34,7 @@
   }
   main{max-width:960px;margin:0 auto;padding:0 16px 40px}
   /* Hero — Premium Minimal (Design A) */
-  .hero{max-width:640px;margin:0 auto;text-align:center;padding:48px 0 32px}
+  .hero{max-width:640px;margin:0 auto;text-align:center;padding:8px 0 20px}
   .carousel{position:relative;overflow:visible;background:#000;border-radius:16px;margin:10px 6px 0;box-shadow:0 4px 16px rgba(0,0,0,.12)}
   .car-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;border-radius:16px}
   .car-track::-webkit-scrollbar{display:none}
@@ -47,15 +47,9 @@
   .car-btn:active{transform:translateY(-50%) scale(.92)}
   .car-btn.prev{left:-8px}
   .car-btn.next{right:-8px}
-  .hero h1{font-family:Georgia,'Times New Roman',serif;font-size:3.2rem;font-weight:400;margin:0 0 14px;letter-spacing:.5px}
+  .hero h1{font-family:Georgia,'Times New Roman',serif;font-size:2.6rem;font-weight:400;margin:0 0 14px;letter-spacing:.5px}
   .hero p{color:#6f6156;line-height:1.6}
-  .hero img{width:92%;max-width:520px;aspect-ratio:1/1;border-radius:16px;object-fit:cover;margin:20px auto 0}
-  .hero .price-hero{font-size:1.8rem;font-weight:800;color:#8a5a2b;margin:20px 0 14px}
-  .hero .btn{display:block;width:78%;margin:0 auto;padding:15px 22px}
-  .badges{display:flex;justify-content:center;gap:28px;margin-top:26px;flex-wrap:wrap}
-  .badges span{font-size:.9rem;color:var(--brown);font-weight:600}
-  .badges b{color:var(--green);font-size:1.1rem;margin-right:4px}
-  @media(max-width:760px){.hero h1{font-size:2.6rem}}
+  @media(max-width:760px){.hero h1{font-size:2.1rem}}
   .btn{display:inline-block;padding:12px 22px;border-radius:24px;text-decoration:none;font-weight:700;cursor:pointer;border:0;transition:background .25s ease,transform .15s ease}
   .btn:hover{transform:translateY(-1px)}
   .btn:active{transform:scale(.97)}
@@ -136,20 +130,11 @@
     <button class="car-btn prev" id="carPrev" aria-label="Previous photo">←</button>
     <button class="car-btn next" id="carNext" aria-label="Next photo">→</button>
   </section>
-  <section class="hero">
-    <h1>Pure Raw Honey</h1>
-    <p>Mother Honey ka 300g jar: pure raw honey, lakdi ka honey dipper aur gift packing ke saath. Koi milawat nahi, bas asli swaad.</p>
-    <img src="hero.jpg" alt="Mother Honey jar">
-    <div class="price-hero">₹349</div>
-    <a class="btn btn-wa" id="heroWa" href="#">WhatsApp par Order Karein</a>
-    <div class="badges">
-      <span><b>✓</b>100% Pure</span>
-      <span><b>✓</b>No Added Sugar</span>
-      <span><b>✓</b>Gift Packing</span>
-    </div>
-  </section>
-
   <section id="product" class="card" data-search="mother honey pure raw honey 300g jar dipper gift packing order">
+    <div class="hero">
+      <h1>Mother Honey — Pure, Raw &amp; Natural Honey in a Glass Jar, with Wooden Dipper &amp; Gift Packing</h1>
+      <p>Mother Honey ka 300g jar: pure raw honey, lakdi ka honey dipper aur gift packing ke saath. Koi milawat nahi, bas asli swaad.</p>
+    </div>
     <div class="product">
       <div>
         <img class="main" id="mainImg" src="hero.jpg" alt="Mother Honey 300g jar">
@@ -164,7 +149,6 @@
         </div>
       </div>
       <div>
-        <h2 style="margin-top:0">Mother Honey — Pure Raw Honey (300g)</h2>
         <p>300g honey &bull; Food-grade jar &bull; Wooden honey dipper &bull; Gift packing included</p>
         <div><span class="price" id="priceText"></span><span class="old" id="mrpText"></span></div>
         <div class="qty">
@@ -227,7 +211,6 @@
     const msg = 'Namaste! Mujhe Mother Honey 300g jar order karna hai.%0AQty: ' + qty + '%0ATotal: ' + fmt(PRICE * qty);
     const link = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg;
     document.getElementById('orderWa').href = link;
-    document.getElementById('heroWa').href = link;
   }
   function chgQty(d){ qty = Math.max(1, Math.min(20, qty + d)); refresh(); }
   function swapImg(el, src){
