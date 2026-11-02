@@ -35,18 +35,18 @@
   main{max-width:960px;margin:0 auto;padding:0 16px 40px}
   /* Hero — Premium Minimal (Design A) */
   .hero{max-width:640px;margin:0 auto;text-align:center;padding:48px 0 32px}
-  .carousel{position:relative;overflow:hidden;background:#000}
+  .carousel{position:relative;overflow:hidden;background:#000;border-radius:16px;margin:10px 12px 0;box-shadow:0 4px 16px rgba(0,0,0,.12)}
   .car-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}
   .car-track::-webkit-scrollbar{display:none}
   .car-slide{position:relative;flex:0 0 100%;scroll-snap-align:start;aspect-ratio:2/1;max-height:420px;overflow:hidden}
   .car-slide img{width:100%;height:100%;object-fit:cover;display:block}
-  .car-cap{position:absolute;left:0;right:0;bottom:0;padding:44px 18px 16px;background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,0));color:#fff}
-  .car-cap b{display:block;font-size:1.3rem;margin-bottom:4px}
-  .car-cap span{font-size:.92rem;line-height:1.45;color:rgba(255,255,255,.92)}
-  .car-cta{display:inline-block;margin-top:10px;background:#15803d;color:#fff;text-decoration:none;font-weight:700;font-size:.85rem;padding:9px 18px;border-radius:999px}
-  .car-btn{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.88);color:#3f2d12;font-size:1.5rem;line-height:1;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-  .car-btn.prev{left:12px}
-  .car-btn.next{right:12px}
+  .car-cap{position:absolute;left:0;right:0;bottom:0;padding:36px 16px 12px;background:linear-gradient(to top,rgba(0,0,0,.75),rgba(0,0,0,0));color:#fff}
+  .car-cap b{display:block;font-size:1.05rem;margin-bottom:3px;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+  .car-cap span{font-size:.8rem;line-height:1.4;color:rgba(255,255,255,.92);text-shadow:0 1px 3px rgba(0,0,0,.45)}
+  .car-btn{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#3f2d12;font-size:1.3rem;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;padding-bottom:2px;transition:transform .15s}
+  .car-btn:active{transform:translateY(-50%) scale(.92)}
+  .car-btn.prev{left:10px}
+  .car-btn.next{right:10px}
   .hero h1{font-family:Georgia,'Times New Roman',serif;font-size:3.2rem;font-weight:400;margin:0 0 14px;letter-spacing:.5px}
   .hero p{color:#6f6156;line-height:1.6}
   .hero img{width:92%;max-width:520px;aspect-ratio:1/1;border-radius:16px;object-fit:cover;margin:20px auto 0}
@@ -114,15 +114,15 @@
     <div class="car-track" id="carTrack">
       <div class="car-slide">
         <img src="drip.jpg" alt="Pure raw honey dripping">
-        <div class="car-cap"><b>100% Pure &amp; Raw</b><span>No added sugar, no milawat — seedha, asli honey, poori shuddhata ke saath.</span></div>
+        <div class="car-cap"><b>100% Pure Honey</b><span>No added sugar, no milawat — bas asli swaad.</span></div>
       </div>
       <div class="car-slide">
         <img src="gift.jpg" alt="Mother Honey gift packing">
-        <div class="car-cap"><b>Perfect Gift Choice</b><span>Designer jar, wooden dipper aur gift packing — apno ko dene ke liye best.</span></div>
+        <div class="car-cap"><b>Best Gift</b><span>Designer jar, dipper aur gift packing ke saath.</span></div>
       </div>
       <div class="car-slide">
         <img src="dipper.jpg" alt="Wooden honey dipper">
-        <div class="car-cap"><b>Amazon • Flipkart • Direct</b><span>Jahan se chaho, wahan se lo — direct order ke liye WhatsApp par message karein.</span><br><a class="car-cta" href="https://wa.me/917860758561?text=Namaste!%20Mujhe%20Mother%20Honey%20300g%20jar%20order%20karna%20hai.">WhatsApp par Order Karein</a></div>
+        <div class="car-cap"><b>Buy Anywhere</b><span>Amazon, Flipkart ya direct WhatsApp — jahan se chaho.</span></div>
       </div>
     </div>
     <button class="car-btn prev" id="carPrev" aria-label="Previous photo">‹</button>
