@@ -47,9 +47,9 @@
   .car-btn:active{transform:translateY(-50%) scale(.92)}
   .car-btn.prev{left:-8px}
   .car-btn.next{right:-8px}
-  .hero h1{font-family:Georgia,'Times New Roman',serif;font-size:2.6rem;font-weight:400;margin:0 0 14px;letter-spacing:.5px}
+  .hero h1{font-family:Georgia,'Times New Roman',serif;font-size:1.9rem;font-weight:400;margin:0 0 14px;letter-spacing:.5px;line-height:1.35}
   .hero p{color:#6f6156;line-height:1.6}
-  @media(max-width:760px){.hero h1{font-size:2.1rem}}
+  @media(max-width:760px){.hero h1{font-size:1.1rem;line-height:1.35}}
   .btn{display:inline-block;padding:12px 22px;border-radius:24px;text-decoration:none;font-weight:700;cursor:pointer;border:0;transition:background .25s ease,transform .15s ease}
   .btn:hover{transform:translateY(-1px)}
   .btn:active{transform:scale(.97)}
@@ -67,6 +67,8 @@
   .old{color:var(--muted);text-decoration:line-through;font-size:1rem;margin-left:8px}
   .qty{display:flex;align-items:center;gap:10px;margin:14px 0}
   .qty button{width:36px;height:36px;border-radius:50%;border:1px solid #e5c98a;background:#fff;font-size:1.2rem;cursor:pointer}
+  .tiers{margin-top:12px;background:#faf7f2;border:1px solid #f0dfb8;border-radius:10px;padding:10px 12px;font-size:.88rem;line-height:1.6}
+  .tiers b{display:block;margin-bottom:2px}
   .tabs{display:flex;gap:8px;margin-top:20px;border-bottom:2px solid #f0dfb8}
   .tabs button{background:none;border:0;padding:10px 14px;font-weight:700;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent}
   .tabs button.on{color:var(--amber);border-bottom-color:var(--amber)}
@@ -133,7 +135,6 @@
   <section id="product" class="card" data-search="mother honey pure raw honey 300g jar dipper gift packing order">
     <div class="hero">
       <h1>Mother Honey — Pure, Raw &amp; Natural Honey in a Glass Jar, with Wooden Dipper &amp; Gift Packing</h1>
-      <p>Mother Honey ka 300g jar: pure raw honey, lakdi ka honey dipper aur gift packing ke saath. Koi milawat nahi, bas asli swaad.</p>
     </div>
     <div class="product">
       <div>
@@ -151,13 +152,15 @@
       <div>
         <p>300g honey &bull; Food-grade jar &bull; Wooden honey dipper &bull; Gift packing included</p>
         <div><span class="price" id="priceText"></span><span class="old" id="mrpText"></span></div>
+        <a class="btn btn-wa" id="orderWa" href="#">WhatsApp par Order Karein</a>
         <div class="qty">
           <button onclick="chgQty(-1)">−</button>
           <span>Qty: <b id="qty">1</b></span>
           <button onclick="chgQty(1)">+</button>
           <span>Total: <b id="total"></b></span>
         </div>
-        <a class="btn btn-wa" id="orderWa" href="#">WhatsApp par Order Karein</a>
+        <p id="saveLine" style="color:#15803d;font-weight:700;margin:4px 0 0"></p>
+        <div class="tiers"><b>Bundle offers:</b> 1 pc — ₹349 &nbsp;·&nbsp; 2 pc — ₹658 (₹329/pc) &nbsp;·&nbsp; 3+ pc — ₹299/pc</div>
         <p style="color:var(--muted)">Order WhatsApp par confirm hoga — naam, address aur payment wahi par tay hoga.</p>
       </div>
     </div>
@@ -197,18 +200,25 @@
 
 <script>
   // ---- Final settings (Tauheed ke answers, 2 Nov 2026) ----
-  const PRICE = 349;            // Final selling price
-  const MRP = 349;              // MRP = selling price (koi fake discount nahi)
+  const PRICE = 349;            // 1 pc price
+  const MRP = 549;              // MRP (pehle wala premium option)
   const WHATSAPP_NUMBER = '917860758561'; // Site par public karne ki approval mil gayi
   let qty = 1;
   function fmt(n){ return '₹' + n; }
+  function unitPrice(q){ return q === 1 ? PRICE : (q === 2 ? 329 : 299); }
   function refresh(){
+    const unit = unitPrice(qty);
+    const total = unit * qty;
+    const saved = MRP * qty - total;
     document.getElementById('qty').textContent = qty;
-    document.getElementById('total').textContent = fmt(PRICE * qty);
-    document.getElementById('priceText').textContent = fmt(PRICE);
-    document.getElementById('mrpText').style.display = (MRP > PRICE) ? '' : 'none';
+    document.getElementById('total').textContent = fmt(total);
+    document.getElementById('priceText').textContent = fmt(unit);
+    document.getElementById('mrpText').style.display = (MRP > unit) ? '' : 'none';
     document.getElementById('mrpText').textContent = fmt(MRP);
-    const msg = 'Namaste! Mujhe Mother Honey 300g jar order karna hai.%0AQty: ' + qty + '%0ATotal: ' + fmt(PRICE * qty);
+    document.getElementById('saveLine').textContent = (qty === 1)
+      ? 'MRP ₹549 — aap ₹' + saved + ' bacha rahe ho!'
+      : (qty + ' pc ek saath: sirf ' + fmt(total) + ' — aap ₹' + saved + ' bacha rahe ho!');
+    const msg = 'Namaste! Mujhe Mother Honey 300g jar order karna hai.%0AQty: ' + qty + '%0APrice: ' + fmt(unit) + '/pc%0ATotal: ' + fmt(total) + '%0ABachat: ' + fmt(saved);
     const link = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg;
     document.getElementById('orderWa').href = link;
   }
