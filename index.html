@@ -8,6 +8,7 @@
 <style>
   :root{--amber:#b45309;--amber2:#d97706;--cream:#fff8ec;--brown:#3f2d12;--muted:#7a5c33;--green:#0b3d2e}
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--cream);color:var(--brown)}
   a{color:var(--amber)}
   /* Header */
@@ -35,16 +36,19 @@
   .hero h1{font-size:2.2rem;margin:0 0 10px}
   .hero p{color:var(--muted);line-height:1.6}
   .hero img{width:100%;border-radius:16px;object-fit:cover}
-  .btn{display:inline-block;padding:12px 22px;border-radius:24px;text-decoration:none;font-weight:700;cursor:pointer;border:0}
-  .btn-wa{background:#25D366;color:#fff}
+  .btn{display:inline-block;padding:12px 22px;border-radius:24px;text-decoration:none;font-weight:700;cursor:pointer;border:0;transition:background .25s ease,transform .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn:active{transform:scale(.97)}
+  .btn-wa{background:#15803d;color:#fff}
   .btn-amber{background:var(--amber);color:#fff}
   @media(max-width:760px){.hero{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
   /* Product */
   .card{background:#fff;border:1px solid #f0dfb8;border-radius:16px;padding:20px;margin-top:8px}
   .product{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  .product img.main{width:100%;border-radius:12px;object-fit:cover}
+  .product img.main{width:100%;border-radius:12px;object-fit:cover;transition:opacity .3s ease}
   .thumbs{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
-  .thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent}
+  .thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:transform .2s ease,border-color .2s ease}
+  .thumbs img:hover{transform:scale(1.07)}
   .thumbs img.sel{border-color:var(--amber)}
   .price{font-size:1.6rem;font-weight:800;color:var(--amber)}
   .old{color:var(--muted);text-decoration:line-through;font-size:1rem;margin-left:8px}
@@ -54,7 +58,8 @@
   .tabs button{background:none;border:0;padding:10px 14px;font-weight:700;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent}
   .tabs button.on{color:var(--amber);border-bottom-color:var(--amber)}
   .tabpane{display:none;line-height:1.7;padding-top:12px}
-  .tabpane.on{display:block}
+  .tabpane.on{display:block;animation:fadein .3s ease}
+  @keyframes fadein{from{opacity:0}to{opacity:1}}
   @media(max-width:760px){.product{grid-template-columns:1fr}}
   /* Sections */
   h2{margin-top:40px}
@@ -73,7 +78,7 @@
 </head>
 <body>
 <header>
-  <a class="logo" href="#"><img src="assets/logo.webp" alt="Mother Honey logo"><span><b>Mother Honey</b><span>Pure Raw Honey</span></span></a>
+  <a class="logo" href="#"><img src="assets/logo.webp" alt="Mother Honey logo" onerror="this.style.display='none'"><span><b>Mother Honey</b><span>Pure Raw Honey</span></span></a>
   <nav id="mainNav">
     <a href="#product">Product</a>
     <a href="#why">Why Mother Honey</a>
@@ -91,7 +96,6 @@
       <h1>Shuddh, raw honey — seedha aapke ghar tak.</h1>
       <p>Mother Honey ka 300g jar: pure raw honey, lakdi ka honey dipper aur gift packing ke saath. Koi milawat nahi, bas asli swaad.</p>
       <a class="btn btn-wa" id="heroWa" href="#">WhatsApp par Order Karein</a>
-      <a class="btn btn-amber" href="#product">Product Dekhein</a>
     </div>
     <img src="hero.jpg" alt="Mother Honey jar">
   </section>
@@ -178,7 +182,11 @@
   }
   function chgQty(d){ qty = Math.max(1, Math.min(20, qty + d)); refresh(); }
   function swapImg(el, src){
-    document.getElementById('mainImg').src = src;
+    const m = document.getElementById('mainImg');
+    m.style.opacity = 0;
+    const img = new Image();
+    img.onload = function(){ m.src = src; m.style.opacity = 1; };
+    img.src = src;
     document.querySelectorAll('.thumbs img').forEach(i => i.classList.remove('sel'));
     el.classList.add('sel');
   }
